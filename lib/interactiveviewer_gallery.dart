@@ -204,7 +204,7 @@ class _TweetSourceGalleryState extends State<InteractiveviewerGallery> with Sing
       minScale: widget.minScale,
       child: CustomDismissible(
         onDismissed: () => Navigator.of(context).pop(),
-        enabled: !disableDismissable && _enableDismiss,
+        enabled: !widget.disableDismissable && _enableDismiss,
         child: PageView.builder(
           onPageChanged: _onPageChanged,
           controller: _pageController,
