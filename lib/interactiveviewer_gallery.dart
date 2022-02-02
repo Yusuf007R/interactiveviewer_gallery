@@ -24,6 +24,7 @@ class InteractiveviewerGallery<T> extends StatefulWidget {
     required this.itemBuilder,
     this.maxScale = 2.5,
     this.minScale = 1.0,
+    this.doubleTapScale = 0.7,
     this.onPageChanged,
     this.disableDismissable = false,
   });
@@ -42,6 +43,8 @@ class InteractiveviewerGallery<T> extends StatefulWidget {
   final double maxScale;
 
   final double minScale;
+  
+  final double doubleTapScale;
 
   final ValueChanged<int>? onPageChanged;
 
@@ -231,7 +234,7 @@ class _TweetSourceGalleryState extends State<InteractiveviewerGallery> with Sing
     double targetScale = widget.minScale;
 
     if (currentScale <= widget.minScale) {
-      targetScale = widget.maxScale * 0.7;
+      targetScale = widget.maxScale * widget.doubleTapScale;
     }
 
     double offSetX = targetScale == 1.0 ? 0.0 : - _doubleTapLocalPosition.dx * (targetScale - 1);
