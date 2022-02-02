@@ -83,7 +83,7 @@ class _TweetSourceGalleryState extends State<InteractiveviewerGallery> with Sing
 
     _animationController = AnimationController(
       vsync: this,
-      duration: Duration(milliseconds: 300),
+      duration: Duration(milliseconds: 200),
     )
       ..addListener(() {
         _transformationController!.value = _animation?.value ?? Matrix4.identity();
@@ -187,7 +187,7 @@ class _TweetSourceGalleryState extends State<InteractiveviewerGallery> with Sing
         begin: _transformationController!.value,
         end: Matrix4.identity(),
       ).animate(
-        CurveTween(curve: Curves.easeOut).animate(_animationController),
+        CurveTween(curve: Curves.linear).animate(_animationController),
       );
 
       _animationController.forward(from: 0);
@@ -246,7 +246,7 @@ class _TweetSourceGalleryState extends State<InteractiveviewerGallery> with Sing
       begin: _transformationController!.value,
       end: matrix,
     ).animate(
-      CurveTween(curve: Curves.easeOut).animate(_animationController),
+      CurveTween(curve: Curves.linear).animate(_animationController),
     );
     _animationController.forward(from: 0).whenComplete(() => _onScaleChanged(targetScale));
   }
