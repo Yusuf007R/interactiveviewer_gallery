@@ -25,10 +25,13 @@ class InteractiveviewerGallery<T> extends StatefulWidget {
     this.maxScale = 2.5,
     this.minScale = 1.0,
     this.onPageChanged,
+    this.disableDismissable = false,
   });
 
   /// The sources to show.
   final List<T> sources;
+  
+  final bool disableDismissable;
 
   /// The index of the first source in [sources] to show.
   final int initIndex;
@@ -201,7 +204,7 @@ class _TweetSourceGalleryState extends State<InteractiveviewerGallery> with Sing
       minScale: widget.minScale,
       child: CustomDismissible(
         onDismissed: () => Navigator.of(context).pop(),
-        enabled: false,
+        enabled: !disableDismissable && _enableDismiss,
         child: PageView.builder(
           onPageChanged: _onPageChanged,
           controller: _pageController,
